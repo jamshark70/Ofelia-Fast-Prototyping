@@ -9,3 +9,47 @@ Many thanks to Zack Lee for making this great PureData library.
 Note: windows users might need to install codec package like [k-lite](https://codecguide.com/) in order to be able to play videos.
 
 ![alt text](data/screen.png)
+
+
+## list of abstractions:
+
+of.box
+of.camera
+of.circle
+of.color
+of.cone
+of.cylinder
+of.dragged
+of.draw
+of.ellipse
+of.fbo
+of.grabscreen
+of.icosphere
+of.image
+of.keyboard
+of.light
+of.material
+of.mouse
+of.movie
+of.multiimage
+of.node
+of.noise
+of.nolight
+of.oscillo~
+of.path
+of.plane
+of.quad
+of.rectangle
+of.rectrounded
+of.repeat
+of.rotate
+of.scale
+of.soundplayer
+of.sphere
+of.text
+of.texture
+of.translate
+of.triangle
+of.videoin
+of.view
+of.window
