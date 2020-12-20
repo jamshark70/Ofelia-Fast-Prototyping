@@ -52,4 +52,4 @@ of.translate\
 of.triangle\
 of.videoin\
 of.view\
-of.window\
+of.window
