@@ -8,23 +8,17 @@
 #X obj 31 50 r \$0-all;
 #X obj 82 1 s \$0-update;
 #X obj 134 23 s \$0-buffer;
-#N canvas 618 77 376 330 buffer 0;
+#N canvas 618 77 453 330 buffer 0;
 #X obj 20 20 inlet~;
 #X obj 20 127 tabwrite~ \$0-array;
 #X obj 99 86 metro 40;
 #X obj 20 235 array define \$0-array 100;
-#X obj 76 22 ui.toggle @size 15 15 @receive "(null)" @send "(null)"
-@pinned 0 @presetname "ui.toggle.1" @background_color 0.93 0.93 0.93
-1 @border_color 0.6 0.6 0.6 1 @label_color 0 0 0 1 @active_color 0
-0.75 1 1 @fontname "Helvetica" @fontweight "normal" @fontslant "roman"
-@fontsize 11 @label "(null)" @label_inner 0 @label_side "top" @label_align
-"left" @label_valign "top" @label_margins 0 0;
 #X obj 20 176 r \$0-resize;
 #X msg 20 199 resize \$1;
 #X obj 99 21 r \$0-update;
 #X obj 279 20 r \$0-buffer;
 #X msg 279 66 start;
-#X msg 302 83 stop;
+#X msg 334 67 stop;
 #X obj 152 43 r \$0-updatetime;
 #X obj 35 45 loadbang;
 #X obj 35 68 \$1;
@@ -33,19 +27,18 @@
 #X obj 179 181 sel 0;
 #X connect 0 0 1 0;
 #X connect 2 0 1 0;
-#X connect 4 0 2 0;
-#X connect 5 0 6 0;
-#X connect 6 0 3 0;
-#X connect 7 0 2 0;
-#X connect 8 0 9 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 0;
 #X connect 9 0 1 0;
-#X connect 10 0 1 0;
-#X connect 11 0 2 1;
-#X connect 12 0 13 0;
-#X connect 13 0 2 0;
+#X connect 10 0 2 1;
+#X connect 11 0 12 0;
+#X connect 12 0 2 0;
+#X connect 13 0 14 0;
 #X connect 14 0 15 0;
-#X connect 15 0 16 0;
-#X connect 16 1 6 0;
+#X connect 15 1 5 0;
 #X restore 345 8 pd buffer;
 #X obj 31 -21 route resize float buffer time;
 #X obj 186 46 s \$0-updatetime;
