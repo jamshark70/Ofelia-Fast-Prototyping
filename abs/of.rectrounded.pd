@@ -1,6 +1,6 @@
-#N canvas 417 97 863 642 12;
+#N canvas 417 34 863 709 12;
 #X obj 31 14 inlet;
-#X obj 31 612 outlet;
+#X obj 31 622 outlet;
 #X obj 93 14 inlet;
 #X obj 163 14 inlet;
 #X text 800 605 RI;
@@ -32,7 +32,7 @@ end \; \; function M.bang() \; ofSetLineWidth(strokeweight) \; if rectmode
 == "line" then ofNoFill() else ofFill() end \; node\$0:transformGL()
 \; ofDrawRectRounded(position:vec3() \, width \, height \, radius)
 \; node\$0:restoreTransformGL() \; if debug == 1 then node\$0:draw()
-end \; return anything \; end \;;
+end \; ofFill() \; return anything \; end \;;
 #X f 115;
 #X connect 0 0 9 0;
 #X connect 2 0 7 0;

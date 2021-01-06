@@ -1,6 +1,6 @@
-#N canvas 358 68 813 687 12;
+#N canvas 363 23 813 751 12;
 #X obj 31 14 inlet;
-#X obj 31 666 outlet;
+#X obj 31 706 outlet;
 #X obj 93 14 inlet;
 #X obj 253 14 inlet;
 #X text 770 619 RI;
@@ -40,8 +40,8 @@ end \; function M.lookat(l) lookat.x=l[1] lookat.y=l[2] lookat.z=l[3]
 node\$0:lookAt(lookat:vec3()) end \; \; function M.bang() \; ofSetLineWidth(strokeweight)
 \; if drawmode == "line" then ofNoFill()end \; node\$0:transformGL()
 \; ofDrawTriangle(x1 \, y1 \, x2 \, y2 \, x3 \, y3) \; node\$0:restoreTransformGL()
-\; if debug == 1 then node\$0:draw() end \; return anything \; end
-\;;
+\; if debug == 1 then node\$0:draw() end \; ofFill() \; return anything
+\; end \;;
 #X f 109;
 #X connect 0 0 15 0;
 #X connect 2 0 6 0;
