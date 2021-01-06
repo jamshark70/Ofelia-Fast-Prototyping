@@ -1,4 +1,4 @@
-#N canvas 542 41 622 641 12;
+#N canvas 542 41 733 645 12;
 #X declare -lib ofelia;
 #X obj 9 10 cnv 15 600 60 empty empty empty 20 12 0 14 -233017 -66577
 0;
@@ -67,10 +67,7 @@
 #X text 24 40 Args: mode (0 = COMMANDS 1 = POLYLINES);
 #X msg 294 541 polywinding \$1;
 #X obj 294 520 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X text 403 516 0 = OF_POLY_WINDING_ODD 1 = OF_POLY_WINDING_NONZERO
-2 = OF_POLY_WINDING_POSITIVE 3 = OF_POLY_WINDING_NEGATIVE 4 = OF_POLY_WINDING_ABS_GEQ_TWO
-;
+-1 -1 3;
 #X msg 46 425 get;
 #X text 77 426 to do...;
 #X text 124 163 Add transformation;
@@ -79,6 +76,9 @@
 #X obj 173 122 metro 40;
 #X msg 124 201 position 0 0 -10;
 #X text 63 356 -> need to add stroke if 0;
+#X text 403 516 0 = OF_POLY_WINDING_ODD \; 1 = OF_POLY_WINDING_NONZERO
+\; 2 = OF_POLY_WINDING_POSITIVE \; 3 = OF_POLY_WINDING_NEGATIVE \;
+4 = OF_POLY_WINDING_ABS_GEQ_TWO;
 #X connect 1 0 13 0;
 #X connect 6 0 5 0;
 #X connect 7 0 5 0;
@@ -116,8 +116,8 @@
 #X connect 41 0 36 0;
 #X connect 44 0 5 0;
 #X connect 45 0 44 0;
-#X connect 47 0 5 0;
+#X connect 46 0 5 0;
+#X connect 49 0 50 0;
 #X connect 50 0 51 0;
-#X connect 51 0 52 0;
-#X connect 51 0 37 0;
-#X connect 52 0 5 0;
+#X connect 50 0 37 0;
+#X connect 51 0 5 0;
