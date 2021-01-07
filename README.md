@@ -36,10 +36,10 @@ of.movie\
 of.multiimage\
 of.node\
 of.noise\
-of.nolight\
 of.oscillo~\
 of.path\
 of.plane\
+of.pointlight\
 of.quad\
 of.rectangle\
 of.rectrounded\
@@ -48,10 +48,12 @@ of.rotate\
 of.scale\
 of.soundplayer\
 of.sphere\
+of.spotlight\
 of.text\
 of.texture\
 of.translate\
 of.triangle\
 of.videoin\
 of.view\
-of.window
+of.window\
+of.worldlight
