@@ -14,6 +14,7 @@ Note: windows users might need to install codec package like [k-lite](https://co
 ## list of current abstractions:
 
 of.box\
+of.bezier\
 of.camera\
 of.circle\
 of.color\
@@ -28,6 +29,7 @@ of.icosphere\
 of.image\
 of.keyboard\
 of.light\
+of.line\
 of.material\
 of.mouse\
 of.movie\
