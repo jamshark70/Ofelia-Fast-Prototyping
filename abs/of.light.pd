@@ -7,7 +7,7 @@
 \; local args = canvas:getArgs() \; local outlet = ofOutlet(this) \;
 local pass = args[1] \; \; function M.pass(f) pass = f end \; function
 M.bang() \; if pass == 0 then ofDisableLighting() end \; outlet:outletBang(0)
-\; if ofGetLightingEnabled() then ofEnableLighting() end end \;;
+\; if _lighting then ofEnableLighting() end end \;;
 #X connect 0 0 4 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
