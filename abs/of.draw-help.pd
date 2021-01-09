@@ -35,15 +35,15 @@ execution order priority matters:, f 86;
 #X connect 9 0 2 0;
 #X connect 10 0 4 0;
 #X connect 11 0 5 0;
-#X restore 455 254 pd GUI_ON_SCREEN;
-#X obj 455 232 tgl 15 0 empty empty ActivateGUI 17 7 0 10 -262144 -1
+#X restore 282 260 pd GUI_ON_SCREEN;
+#X obj 282 238 tgl 15 0 empty empty ActivateGUI 17 7 0 10 -262144 -1
 -1 0 1;
 #X msg 29 127 0;
 #X floatatom 14 88 5 0 0 2 Draw-Order - -;
 #X obj 44 209 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 27 109 disable;
-#X floatatom 564 231 5 0 0 2 rotY - -;
+#X floatatom 391 237 5 0 0 2 rotY - -;
 #X obj 12 346 cnv 15 200 200 empty empty empty 20 12 0 14 -258113 -66577
 0;
 #X text 69 412 Red;
@@ -63,10 +63,6 @@ execution order priority matters:, f 86;
 #X obj 427 488 of.rectangle 200 200;
 #X obj 427 463 of.translate 100 50;
 #X text 220 91 depthTest "On" (default): Better for 3d;
-#X text 222 159 Note: default order is 1 If order < 0 : Rendering is
-out of camera and point 0 \, 0 \, 0 is bottom left. if order > 1000
-: Rendering is out of camera on TOP (Nice for rendering GUI on screen)
-, f 65;
 #X text 21 22 Start a new rendering with layering (order) at center
 ;
 #X obj 47 388 of.draw 1 0;
@@ -76,7 +72,7 @@ out of camera and point 0 \, 0 \, 0 is bottom left. if order > 1000
 #X text 236 358 Order 2 \, depth 0;
 #X text 426 361 Order 3 \, depth 0;
 #X obj 74 138 vradio 15 1 1 6 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
+-1 1;
 #X text 96 136 0: OFF;
 #X text 96 167 2: ADD;
 #X text 96 182 3: SUBTRACT;
@@ -84,14 +80,19 @@ out of camera and point 0 \, 0 \, 0 is bottom left. if order > 1000
 #X text 96 212 5: SCREEN;
 #X text 96 152 1: ALPHA(Default);
 #X text 30 186 depth;
-#X text 21 47 Arguments: draw-order \, depthtest \, blend;
 #X text 96 117 blend:;
 #X obj 14 238 of.draw 4;
 #X obj 14 265 of.image ../data/rgb.jpg;
+#X text 21 47 Arguments: draw-order \, depthtest \, blend (default
+1 \, 1 \, 1);
+#X text 222 159 Note: default order is 1 If order < 0 : Rendering is
+out of camera and point 0 \, 0 \, 0 is bottom left. If order > 1000
+: Rendering is out of camera on TOP (Nice for rendering GUI on screen):
+, f 65;
 #X connect 9 0 8 0;
-#X connect 10 0 49 0;
-#X connect 11 0 49 0;
-#X connect 12 0 49 1;
+#X connect 10 0 47 0;
+#X connect 11 0 47 0;
+#X connect 12 0 47 1;
 #X connect 14 0 8 1;
 #X connect 18 0 19 0;
 #X connect 19 0 17 0;
@@ -99,9 +100,9 @@ out of camera and point 0 \, 0 \, 0 is bottom left. if order > 1000
 #X connect 23 0 24 0;
 #X connect 27 0 29 0;
 #X connect 29 0 28 0;
-#X connect 33 0 18 0;
-#X connect 34 0 22 0;
-#X connect 35 0 27 0;
-#X connect 39 0 49 2;
-#X connect 49 0 50 0;
-#X connect 50 0 1 0;
+#X connect 32 0 18 0;
+#X connect 33 0 22 0;
+#X connect 34 0 27 0;
+#X connect 38 0 47 2;
+#X connect 47 0 48 0;
+#X connect 48 0 1 0;
