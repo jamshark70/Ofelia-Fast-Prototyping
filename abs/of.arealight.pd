@@ -1,4 +1,4 @@
-#N canvas 318 118 962 660 12;
+#N canvas 318 108 962 660 12;
 #X obj 27 20 inlet;
 #X obj 27 746 outlet;
 #X text 116 10 http://openframeworks.kr/doxygen/classof_light.html#a511fcf1d033fd005ecdd5d0eb9c5811f
@@ -19,7 +19,7 @@ end \; if args[2] == nil then attenuation = 1 end \; if args[3] ==
 nil then cutoff = 40 end \; if args[4] == nil then concentration =
 20 end \; if args[5] == nil then smooth = 1 end \; M.setup() end \;
 \; function M.setup() \; if ofWindow.exists then \; light\$0 = ofLight()
-\; light\$0:setDirectional() \; light\$0:setPosition (position:vec3())
+\; light\$0:setAreaLight(100 \, 100) \; light\$0:setPosition (position:vec3())
 light\$0:setOrientation (orientation:vec3()) light\$0:setScale (scale:vec3())
 \; light\$0:setAmbientColor(ambient) light\$0:setDiffuseColor(diffuse)
 light\$0:setSpecularColor(specular) end \; M.active(active) M.attenuation(attenuation)
@@ -36,14 +36,14 @@ end \; function M.attenuation(f) attenuation = f light\$0:setAttenuation(f)
 end \; function M.position(l) position.x=l[1] position.y=l[2] position.z=l[3]
 light\$0:setPosition(position:vec3()) end \; function M.scale(l) scale.x=l[1]
 scale.y=l[2] scale.z=l[3] light\$0:setScale(scale:vec3()) end \; function
-M.smooth(f) smooth = f end \; function M.debug(f) debug = f _lighting
-= 1 end \; function M.orientation(l) orientation.x=l[1] orientation.y=l[2]
-orientation.z=l[3] light\$0:setOrientation(orientation:vec3()) end
-\; \; function M.bang() \; ofSetSmoothLighting(smooth ~= 0) \; if debug
-== 1 then ofDisableLighting() light\$0:draw() if _lighting == 1 then
-ofEnableLighting() end end \; return(anything) end \; function M.free()
-\; light\$0:disable() ofWindow.removeListener("setup" \, this) light\$0
-= nil collectgarbage() \; end \;;
+M.smooth(f) smooth = f end \; function M.area(l) light\$0:setAreaLight(l[1]
+\, l[2]) end \; function M.debug(f) debug = f _lighting = 1 end \;
+function M.orientation(l) orientation.x=l[1] orientation.y=l[2] orientation.z=l[3]
+light\$0:setOrientation(orientation:vec3()) end \; \; function M.bang()
+\; ofSetSmoothLighting(smooth ~= 0) \; if debug == 1 then ofDisableLighting()
+light\$0:draw() if _lighting == 1 then ofEnableLighting() end end \;
+return(anything) end \; function M.free() \; light\$0:disable() ofWindow.removeListener("setup"
+\, this) light\$0 = nil collectgarbage() \; end \;;
 #X f 134;
 #X connect 0 0 5 0;
 #X connect 5 0 1 0;
