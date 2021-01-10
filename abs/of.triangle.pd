@@ -1,4 +1,4 @@
-#N canvas 363 23 813 751 12;
+#N canvas 467 175 813 751 12;
 #X obj 31 14 inlet;
 #X obj 31 706 outlet;
 #X obj 93 14 inlet;
@@ -20,9 +20,9 @@ x2 \, y2 \, x3 \, y3 \, drawmode \, strokeweight \, debug = args[1]
 \, args[2] \, args[3] \, args[4] \, args[5] \, args[6] \, args[7] \,
 args[8] \; local position \, orientation \, scale \, lookat = ofVec3f()
 \, ofVec3f() \, ofVec3f(1 \, 1 \, 1) \, ofVec3f() \; \; function M.new()
-\; if args[1] == nil then x1 = 0 end \; if args[2] == nil then y1 =
--100 end \; if args[3] == nil then x2 = 100 end \; if args[4] == nil
-then y2 = 100 end \; if args[5] == nil then x3 = -100 end \; if args[6]
+\; if args[1] == nil then x1 = -100 end \; if args[2] == nil then y1
+= -100 end \; if args[3] == nil then x2 = 100 end \; if args[4] ==
+nil then y2 = -100 end \; if args[5] == nil then x3 = 0 end \; if args[6]
 == nil then y3 = 100 end \; if args[7] == nil then drawmode = "fill"
 end \; if args[8] == nil then strokeweight = 1 end \; end \; \; function
 M.x1(float) x1=float end \; function M.y1(float) y1=float end \; function

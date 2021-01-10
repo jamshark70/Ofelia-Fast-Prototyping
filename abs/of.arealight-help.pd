@@ -58,6 +58,9 @@
 #X text 25 509 area lights allow to define a light that has some area
 as opposed to a point light which has infinitesimal size. Need opengl
 version 3 or more when creating the opengl context, f 81;
+#X floatatom 259 154 5 0 0 0 - - -;
+#X text 298 155 Position X;
+#X msg 259 177 position \$1 0 0;
 #X connect 1 0 28 0;
 #X connect 2 0 43 0;
 #X connect 3 0 2 0;
@@ -91,3 +94,5 @@ version 3 or more when creating the opengl context, f 81;
 #X connect 39 0 40 2;
 #X connect 44 0 43 0;
 #X connect 45 0 44 0;
+#X connect 49 0 51 0;
+#X connect 51 0 43 0;

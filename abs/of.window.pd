@@ -1,8 +1,7 @@
-#N canvas 329 84 951 694 12;
+#N canvas 329 176 951 436 12;
 #X obj 66 3 inlet;
 #X obj 8 958 outlet;
 #X text 808 912 RI;
-#X text 400 754 - Pb: crash when re-create with of.camera;
 #X obj 44 830 ofelia d window-\$0 \; function M.new() ofWindow.addListener("draw"
 \, this \, 1000) end \; function M.free() ofWindow.removeListener("draw"
 \, this) end \; function M.draw() ofPopView() _maincamera:endCamera()
@@ -52,11 +51,13 @@ M.fullscreen(float) if ofWindow.exists then ofSetFullscreen(float~=0)
 end end \; function M.autoclear(float) autoclear = (float ~= 0) if
 ofWindow.exists then ofSetBackgroundAuto(autoclear) end end \; function
 M.clear(l) if ofWindow.exists then ofClear(l[1] \, l[2] \, l[3]) end
-end \; function M.get() if ofWindow.exists then width = ofGetWindowWidth()
-height = ofGetWindowHeight() \; framerate = ofGetFrameRate() return
-ofTable (width \, height \, framerate) end end \; \; function M.draw()
-\; ofPushView() \; _maincamera:beginCamera() \; end \;;
+end \; function M.glversion(l) window:setGLVersion(l[1] \, l[2]) end
+\; function M.glesversion(f) window:setGLVersion(f) end \; function
+M.get() if ofWindow.exists then width = ofGetWindowWidth() height =
+ofGetWindowHeight() \; framerate = ofGetFrameRate() return ofTable
+(width \, height \, framerate) end end \; \; function M.draw() \; ofPushView()
+\; _maincamera:beginCamera() \; end \;;
 #X f 131;
-#X connect 0 0 8 0;
-#X connect 9 0 10 0;
-#X connect 10 0 1 0;
+#X connect 0 0 7 0;
+#X connect 8 0 9 0;
+#X connect 9 0 1 0;
