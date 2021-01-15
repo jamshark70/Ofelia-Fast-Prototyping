@@ -1,6 +1,6 @@
 #N canvas 130 86 808 679 12;
 #X obj 15 10 inlet;
-#X obj 15 164 outlet;
+#X obj 15 320 outlet;
 #X obj 733 163 outlet;
 #X text 601 737 RI;
 #X msg 59 32 index \$1;
@@ -9,10 +9,17 @@
 #X f 103;
 #X obj 144 10 loadbang;
 #X msg 144 35 read scripts/of-multiimage.lua;
+#X obj 15 192 f \$0;
+#X obj 15 167 route bang;
+#X msg 15 217 imageID image-\$1 \, bang;
 #X connect 0 0 6 0;
 #X connect 4 0 6 0;
 #X connect 5 0 4 0;
-#X connect 6 0 1 0;
+#X connect 6 0 10 0;
 #X connect 6 1 2 0;
 #X connect 7 0 8 0;
 #X connect 8 0 6 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 10 1 1 0;
+#X connect 11 0 1 0;
