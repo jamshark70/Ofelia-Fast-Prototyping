@@ -39,7 +39,7 @@ function M.lookat(l) lookat.x=l[1] lookat.y=l[2] lookat.z=l[3] M.plane:lookAt(lo
 function M.texture(f) if f > 0 then M.plane:enableTextures() else M.plane:disableTextures() end end;
 function M.texturemap(l) M.plane:mapTexCoords(l[1], l[2], l[3], l[4]) end;
 function M.imageID(sym);
-if sym == nil then M.imageSource = nil M.lastID = nil;
+if sym == nil then M.imageSource = nil M.lastID = nil return("imageID");
 else if sym ~= lastID then;
 M.imageSource = require(sym);
 M.lastID = sym;
