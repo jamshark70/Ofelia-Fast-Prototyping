@@ -1,6 +1,6 @@
 #N canvas 155 86 1075 679 12;
 #X obj 21 14 inlet;
-#X obj 21 226 outlet;
+#X obj 21 232 outlet;
 #X obj 80 12 inlet;
 #X obj 150 12 inlet;
 #X obj 220 12 inlet;
@@ -18,6 +18,7 @@
 #X f 144;
 #X obj 509 12 loadbang;
 #X msg 509 38 read scripts/of-box.lua;
+#X obj 21 207 list trim;
 #X connect 0 0 15 0;
 #X connect 2 0 6 0;
 #X connect 3 0 7 0;
@@ -31,6 +32,7 @@
 #X connect 11 0 15 0;
 #X connect 12 0 15 0;
 #X connect 13 0 15 0;
-#X connect 15 0 1 0;
+#X connect 15 0 18 0;
 #X connect 16 0 17 0;
 #X connect 17 0 15 0;
+#X connect 18 0 1 0;

@@ -1,6 +1,6 @@
 #N canvas 342 86 944 679 12;
 #X obj 31 24 inlet;
-#X obj 31 188 outlet;
+#X obj 31 213 outlet;
 #X obj 90 22 inlet;
 #X obj 170 22 inlet;
 #X obj 250 22 inlet;
@@ -16,6 +16,7 @@
 #X f 131;
 #X obj 466 22 loadbang;
 #X msg 466 48 read scripts/of-cone.lua;
+#X obj 31 188 list trim;
 #X connect 0 0 13 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
@@ -27,6 +28,7 @@
 #X connect 9 0 13 0;
 #X connect 10 0 13 0;
 #X connect 11 0 13 0;
-#X connect 13 0 1 0;
+#X connect 13 0 16 0;
 #X connect 14 0 15 0;
 #X connect 15 0 13 0;
+#X connect 16 0 1 0;

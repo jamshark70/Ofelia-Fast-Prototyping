@@ -1,6 +1,6 @@
 #N canvas 68 86 967 679 12;
 #X obj 31 14 inlet;
-#X obj 31 244 outlet;
+#X obj 31 269 outlet;
 #X obj 90 14 inlet;
 #X obj 170 12 inlet;
 #X obj 250 12 inlet;
@@ -16,6 +16,7 @@
 #X f 130;
 #X obj 470 12 loadbang;
 #X msg 470 38 read scripts/of-cylinder.lua;
+#X obj 31 244 list trim;
 #X connect 0 0 13 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
@@ -27,6 +28,7 @@
 #X connect 9 0 13 0;
 #X connect 10 0 13 0;
 #X connect 12 0 13 0;
-#X connect 13 0 1 0;
+#X connect 13 0 16 0;
 #X connect 14 0 15 0;
 #X connect 15 0 13 0;
+#X connect 16 0 1 0;
