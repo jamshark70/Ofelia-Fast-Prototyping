@@ -35,7 +35,8 @@ color.g=mylist[2] \; color.b=mylist[3] \; color.a=mylist[4] \; if mylist[4]
 \; ofSetColor(color) \; return anything \; end \;;
 #X f 93;
 #X obj 27 45 route imageID;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
+#X obj 27 70 symbol;
 #X connect 0 0 16 0;
 #X connect 1 0 5 0;
 #X connect 2 0 6 0;
@@ -49,6 +50,7 @@ color.g=mylist[2] \; color.b=mylist[3] \; color.a=mylist[4] \; if mylist[4]
 #X connect 14 0 11 0;
 #X connect 14 1 13 0;
 #X connect 15 0 12 0;
-#X connect 16 0 17 0;
+#X connect 16 0 18 0;
 #X connect 16 1 15 0;
 #X connect 17 0 11 0;
+#X connect 18 0 17 0;

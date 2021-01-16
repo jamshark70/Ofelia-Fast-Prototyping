@@ -23,9 +23,11 @@ end \; \; \; function M.bang() \; material\$0:beginMaterial() \; material\$0:set
 \; end \;;
 #X f 110;
 #X obj 27 45 route imageID;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
+#X obj 27 70 symbol;
 #X connect 0 0 3 0;
 #X connect 2 0 1 0;
-#X connect 3 0 4 0;
+#X connect 3 0 5 0;
 #X connect 3 1 2 0;
 #X connect 4 0 1 0;
+#X connect 5 0 4 0;

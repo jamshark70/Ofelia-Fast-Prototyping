@@ -10,11 +10,13 @@ local loop = 0 \; function M.new() \; if args[1] == nil then loop =
 \; end \; function M.bang() \; ofPushMatrix() \; for i = 0 \, loop
 do \; outlet:outletBang(0) \; end \; ofPopMatrix() \; end \;;
 #X obj 41 42 route imageID;
-#X msg 41 67 imageID \$1;
+#X msg 41 92 imageID \$1;
+#X obj 41 67 symbol;
 #X connect 0 0 5 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 1 0;
-#X connect 5 0 6 0;
+#X connect 5 0 7 0;
 #X connect 5 1 4 0;
 #X connect 6 0 1 0;
+#X connect 7 0 6 0;

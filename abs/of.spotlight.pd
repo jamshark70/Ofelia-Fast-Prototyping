@@ -12,11 +12,13 @@
 #X obj 149 49 loadbang;
 #X msg 149 74 read scripts/of-spotlight.lua;
 #X obj 27 45 route imageID, f 14;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
+#X obj 27 70 symbol;
 #X connect 0 0 8 0;
 #X connect 5 0 1 0;
 #X connect 6 0 7 0;
 #X connect 7 0 5 0;
-#X connect 8 0 9 0;
+#X connect 8 0 10 0;
 #X connect 8 1 5 0;
 #X connect 9 0 1 0;
+#X connect 10 0 9 0;

@@ -28,9 +28,11 @@ ofDrawAxis(100) end \; outlet:outletBang(0) \; view\$0:endCamera()
 #X f 103;
 #X obj 39 748 outlet;
 #X obj 39 42 route imageID;
-#X msg 39 67 imageID \$1;
+#X msg 39 92 imageID \$1;
+#X obj 39 67 symbol;
 #X connect 0 0 4 0;
 #X connect 2 0 3 0;
-#X connect 4 0 5 0;
+#X connect 4 0 6 0;
 #X connect 4 1 2 0;
 #X connect 5 0 3 0;
+#X connect 6 0 5 0;

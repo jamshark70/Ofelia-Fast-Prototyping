@@ -10,12 +10,14 @@
 #X obj 115 138 ofelia d light\$0;
 #X f 17;
 #X obj 27 45 route imageID;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
 #X obj 135 45 loadbang;
 #X msg 135 70 read scripts/of-worldlight.lua;
+#X obj 27 70 symbol;
 #X connect 5 0 1 0;
-#X connect 6 0 7 0;
+#X connect 6 0 10 0;
 #X connect 6 1 5 0;
 #X connect 7 0 1 0;
 #X connect 8 0 9 0;
 #X connect 9 0 5 0;
+#X connect 10 0 7 0;

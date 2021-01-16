@@ -18,7 +18,8 @@ x=mylist[1] \; y=mylist[2] \; z=mylist[3] \; end \; \; function M.bang()
 \; ofScale(x \, y \, z) \; return (anything) \; end \;;
 #X f 61;
 #X obj 40 42 route imageID;
-#X msg 40 67 imageID \$1;
+#X msg 40 92 imageID \$1;
+#X obj 40 67 symbol;
 #X connect 0 0 10 0;
 #X connect 2 0 6 0;
 #X connect 3 0 5 0;
@@ -27,6 +28,7 @@ x=mylist[1] \; y=mylist[2] \; z=mylist[3] \; end \; \; function M.bang()
 #X connect 6 0 9 0;
 #X connect 7 0 9 0;
 #X connect 9 0 1 0;
-#X connect 10 0 11 0;
+#X connect 10 0 12 0;
 #X connect 10 1 9 0;
 #X connect 11 0 1 0;
+#X connect 12 0 11 0;

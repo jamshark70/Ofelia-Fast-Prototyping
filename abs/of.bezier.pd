@@ -31,7 +31,8 @@
 #X obj 535 146 loadbang;
 #X msg 535 171 read scripts/of-bezier.lua;
 #X obj 27 45 route imageID;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
+#X obj 27 70 symbol;
 #X connect 0 0 30 0;
 #X connect 2 0 9 0;
 #X connect 3 0 11 0;
@@ -60,6 +61,7 @@
 #X connect 27 0 1 0;
 #X connect 28 0 29 0;
 #X connect 29 0 27 0;
-#X connect 30 0 31 0;
+#X connect 30 0 32 0;
 #X connect 30 1 27 0;
 #X connect 31 0 1 0;
+#X connect 32 0 31 0;

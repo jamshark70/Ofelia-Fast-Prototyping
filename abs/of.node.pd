@@ -69,7 +69,8 @@ ofEnableLighting() end \; node\$0:transformGL() \; return anything
 #X obj 11 822 ofelia f myNode-pop-\$0 \; node\$0:restoreTransformGL()
 \;;
 #X obj 35 45 route imageID;
-#X msg 35 70 imageID \$1;
+#X msg 35 95 imageID \$1;
+#X obj 35 70 symbol;
 #X connect 0 0 28 0;
 #X connect 1 0 6 0;
 #X connect 2 0 7 0;
@@ -95,6 +96,7 @@ ofEnableLighting() end \; node\$0:transformGL() \; return anything
 #X connect 24 0 20 0;
 #X connect 24 1 22 0;
 #X connect 26 0 23 0;
-#X connect 28 0 29 0;
+#X connect 28 0 30 0;
 #X connect 28 1 26 0;
 #X connect 29 0 20 0;
+#X connect 30 0 29 0;

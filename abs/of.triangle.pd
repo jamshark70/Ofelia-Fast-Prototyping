@@ -44,7 +44,8 @@ node\$0:lookAt(lookat:vec3()) end \; \; function M.bang() \; ofSetLineWidth(stro
 \; end \;;
 #X f 109;
 #X obj 31 42 route imageID;
-#X msg 31 67 imageID \$1;
+#X msg 31 92 imageID \$1;
+#X obj 31 67 symbol;
 #X connect 0 0 16 0;
 #X connect 2 0 6 0;
 #X connect 3 0 7 0;
@@ -59,6 +60,7 @@ node\$0:lookAt(lookat:vec3()) end \; \; function M.bang() \; ofSetLineWidth(stro
 #X connect 13 0 15 0;
 #X connect 14 0 15 0;
 #X connect 15 0 1 0;
-#X connect 16 0 17 0;
+#X connect 16 0 18 0;
 #X connect 16 1 15 0;
 #X connect 17 0 1 0;
+#X connect 18 0 17 0;

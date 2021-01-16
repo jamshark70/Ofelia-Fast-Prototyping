@@ -1,6 +1,6 @@
 #N canvas 178 86 878 679 12;
 #X obj 31 24 inlet;
-#X obj 31 199 outlet;
+#X obj 31 225 outlet;
 #X obj 90 22 inlet;
 #X obj 170 22 inlet;
 #X msg 90 48 radius \$1;
@@ -11,11 +11,13 @@
 #X f 116;
 #X obj 243 22 loadbang;
 #X msg 243 48 read scripts/of-sphere.lua;
+#X obj 31 199 list trim;
 #X connect 0 0 8 0;
 #X connect 2 0 4 0;
 #X connect 3 0 5 0;
 #X connect 4 0 8 0;
 #X connect 5 0 8 0;
-#X connect 8 0 1 0;
+#X connect 8 0 11 0;
 #X connect 9 0 10 0;
 #X connect 10 0 8 0;
+#X connect 11 0 1 0;

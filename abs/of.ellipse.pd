@@ -33,7 +33,8 @@ end \; \; function M.bang() \; ofSetLineWidth(strokeweight) \; if drawmode
 \; end \;;
 #X f 108;
 #X obj 27 38 route imageID;
-#X msg 27 63 imageID \$1;
+#X msg 27 88 imageID \$1;
+#X obj 27 63 symbol;
 #X connect 0 0 10 0;
 #X connect 2 0 7 0;
 #X connect 3 0 5 0;
@@ -42,6 +43,7 @@ end \; \; function M.bang() \; ofSetLineWidth(strokeweight) \; if drawmode
 #X connect 7 0 9 0;
 #X connect 8 0 9 0;
 #X connect 9 0 1 0;
-#X connect 10 0 11 0;
+#X connect 10 0 12 0;
 #X connect 10 1 9 0;
 #X connect 11 0 1 0;
+#X connect 12 0 11 0;

@@ -8,7 +8,7 @@
 #X text 823 4 https://forum.openframeworks.cc/t/3-point-light-in-of/22075/2
 , f 100;
 #X obj 27 45 route imageID;
-#X msg 27 70 imageID \$1;
+#X msg 27 95 imageID \$1;
 #X obj 127 45 ofelia d light\$0 \; \; local c = ofCanvas(this) \; local
 args = c:getArgs() \; local active \, attenuation \, cutoff \, concentration
 \, smooth \, debug = args[1] \, args[2] \, args[3] \, args[4] \, args[5]
@@ -47,8 +47,10 @@ light\$0:draw() if _lighting == 1 then ofEnableLighting() end end \;
 return(anything) end \; function M.free() \; light\$0:disable() ofWindow.removeListener("setup"
 \, this) light\$0 = nil collectgarbage() \; end \;;
 #X f 134;
+#X obj 27 70 symbol;
 #X connect 0 0 5 0;
-#X connect 5 0 6 0;
+#X connect 5 0 8 0;
 #X connect 5 1 7 0;
 #X connect 6 0 1 0;
 #X connect 7 0 1 0;
+#X connect 8 0 6 0;
