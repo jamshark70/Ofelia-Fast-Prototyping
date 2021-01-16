@@ -1,11 +1,11 @@
-#N canvas 363 178 803 637 12;
-#X obj 27 20 inlet;
+#N canvas 363 128 803 637 12;
+#X obj 136 18 inlet;
 #X obj 27 547 outlet;
-#X obj 27 57 ofelia d material-\$0 \; local c = ofCanvas(this) \; local
-outlet = ofOutlet(this) \; material\$0 = ofMaterial() \; local args
-= c:getArgs() \; local active \, set \, ambient \, diffuse \, specular
-= args[1] \, args[2] \, args[3] \, args[4] \, args[5] \; local ambient
-\, diffuse \, specular \, emission \, shininess = ofFloatColor(0.2
+#X obj 136 55 ofelia d material-\$0 \; local c = ofCanvas(this) \;
+local outlet = ofOutlet(this) \; material\$0 = ofMaterial() \; local
+args = c:getArgs() \; local active \, set \, ambient \, diffuse \,
+specular = args[1] \, args[2] \, args[3] \, args[4] \, args[5] \; local
+ambient \, diffuse \, specular \, emission \, shininess = ofFloatColor(0.2
 \, 0.2 \, 0.2) \, ofFloatColor() \, ofFloatColor() \, ofFloatColor(0
 \, 0 \, 0) \, 128 \; \; function M.new() \; ofWindow.addListener("setup"
 \, this) \; if args[1] == nil then shininess = 128 else shininess =
@@ -22,5 +22,10 @@ end \; \; \; function M.bang() \; material\$0:beginMaterial() \; material\$0:set
 \, 0 \, 128)) \; outlet:outletBang(0) \; material\$0:endMaterial()
 \; end \;;
 #X f 110;
-#X connect 0 0 2 0;
+#X obj 27 45 route imageID;
+#X msg 27 70 imageID \$1;
+#X connect 0 0 3 0;
 #X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 3 1 2 0;
+#X connect 4 0 1 0;

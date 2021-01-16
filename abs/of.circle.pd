@@ -1,12 +1,12 @@
-#N canvas 815 77 842 640 12;
-#X obj 31 14 inlet;
-#X obj 31 545 outlet;
-#X obj 93 14 inlet;
-#X obj 163 14 inlet;
-#X text 785 536 RI;
-#X msg 163 40 res \$1;
-#X msg 93 40 size \$1;
-#X obj 31 65 ofelia d circle-\$0 \; local c = ofCanvas(this) \; local
+#N canvas 521 86 842 640 12;
+#X obj 109 14 inlet;
+#X obj 21 545 outlet;
+#X obj 171 14 inlet;
+#X obj 241 14 inlet;
+#X text 863 536 RI;
+#X msg 241 40 res \$1;
+#X msg 171 40 size \$1;
+#X obj 109 65 ofelia d circle-\$0 \; local c = ofCanvas(this) \; local
 args = c:getArgs() \; local node\$0 = ofNode() \; local size \, res
 \, drawmode \, strokeweight \, debug = args[1] \, args[2] \, args[3]
 \, args[4] \; local position \, orientation \, scale \, lookat = ofVec3f()
@@ -28,9 +28,14 @@ node\$0:lookAt(lookat:vec3()) end \; \; function M.bang() \; ofSetLineWidth(stro
 \, size) \; node\$0:restoreTransformGL() \; if debug == 1 then node\$0:draw()
 end \; ofFill() \; return anything \; end \;;
 #X f 111;
-#X connect 0 0 7 0;
+#X obj 21 41 route imageID;
+#X msg 21 66 imageID \$1;
+#X connect 0 0 8 0;
 #X connect 2 0 6 0;
 #X connect 3 0 5 0;
 #X connect 5 0 7 0;
 #X connect 6 0 7 0;
 #X connect 7 0 1 0;
+#X connect 8 0 9 0;
+#X connect 8 1 7 0;
+#X connect 9 0 1 0;

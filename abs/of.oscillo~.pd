@@ -1,13 +1,13 @@
-#N canvas 174 31 982 669 12;
-#X obj 31 -46 inlet;
-#X obj 31 589 outlet;
-#X text 862 583 RI;
-#X obj 345 -18 inlet~;
-#X obj 31 22 s \$0-resize;
-#X obj 238 5 s \$0-all;
-#X obj 31 50 r \$0-all;
-#X obj 82 1 s \$0-update;
-#X obj 134 23 s \$0-buffer;
+#N canvas 174 86 982 669 12;
+#X obj 22 -39 inlet;
+#X obj 22 597 outlet;
+#X text 933 591 RI;
+#X obj 416 9 inlet~;
+#X obj 80 49 s \$0-resize;
+#X obj 313 32 s \$0-all;
+#X obj 102 77 r \$0-all;
+#X obj 138 28 s \$0-update;
+#X obj 196 50 s \$0-buffer;
 #N canvas 618 77 453 330 buffer 0;
 #X obj 20 20 inlet~;
 #X obj 20 127 tabwrite~ \$0-array;
@@ -39,10 +39,9 @@
 #X connect 13 0 14 0;
 #X connect 14 0 15 0;
 #X connect 15 1 5 0;
-#X restore 345 8 pd buffer;
-#X obj 31 -21 route resize float buffer time;
-#X obj 186 46 s \$0-updatetime;
-#X obj 31 75 ofelia d rectangle-\$0 \; local c = ofCanvas(this) \;
+#X restore 416 35 pd buffer;
+#X obj 254 73 s \$0-updatetime;
+#X obj 102 102 ofelia d rectangle-\$0 \; local c = ofCanvas(this) \;
 local args = c:getArgs() \; local node\$0 = ofNode() \; local array\$0
 = ofArray("\$0-array") \; local width \, height \, strokeweight = args[3]
 \, args[4] \, args[5] \; local position \, orientation \, scale \,
@@ -67,13 +66,17 @@ node\$0:lookAt(lookat:vec3()) end \; \; function M.bang() \; ofSetLineWidth(stro
 \; if debug == 1 then node\$0:draw() end \; return anything \; end
 \;;
 #X f 121;
-#X text 702 603 greatly inspired by Zack Lee;
-#X connect 0 0 10 0;
+#X text 773 611 greatly inspired by Zack Lee;
+#X obj 22 -14 route imageID resize float buffer time, f 42;
+#X msg 22 11 imageID \$1;
+#X connect 0 0 13 0;
 #X connect 3 0 9 0;
-#X connect 6 0 12 0;
-#X connect 10 0 4 0;
-#X connect 10 1 7 0;
-#X connect 10 2 8 0;
-#X connect 10 3 11 0;
-#X connect 10 4 5 0;
-#X connect 12 0 1 0;
+#X connect 6 0 11 0;
+#X connect 11 0 1 0;
+#X connect 13 0 14 0;
+#X connect 13 1 4 0;
+#X connect 13 2 7 0;
+#X connect 13 3 8 0;
+#X connect 13 4 10 0;
+#X connect 13 5 5 0;
+#X connect 14 0 1 0;

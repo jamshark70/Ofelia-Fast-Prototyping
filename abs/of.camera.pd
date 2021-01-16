@@ -1,19 +1,19 @@
-#N canvas 233 23 1047 755 12;
-#X obj 27 15 inlet;
-#X obj 153 16 inlet;
-#X obj 213 16 inlet;
-#X obj 263 16 inlet;
-#X obj 323 16 inlet;
-#X obj 383 16 inlet;
-#X msg 102 44 tX \$1;
-#X msg 153 44 tY \$1;
-#X msg 213 44 tZ \$1;
-#X msg 263 44 rX \$1;
-#X msg 323 44 rY \$1;
-#X msg 383 44 rZ \$1;
-#X text 597 636 RI, f 3;
-#X obj 27 793 outlet;
-#X obj 102 16 inlet;
+#N canvas 233 86 1047 679 12;
+#X obj 117 12 inlet;
+#X obj 243 13 inlet;
+#X obj 303 13 inlet;
+#X obj 353 13 inlet;
+#X obj 413 13 inlet;
+#X obj 473 13 inlet;
+#X msg 192 41 tX \$1;
+#X msg 243 41 tY \$1;
+#X msg 303 41 tZ \$1;
+#X msg 353 41 rX \$1;
+#X msg 413 41 rY \$1;
+#X msg 473 41 rZ \$1;
+#X text 687 633 RI, f 3;
+#X obj 29 785 outlet;
+#X obj 192 13 inlet;
 #N canvas 0 23 476 208 Notes 0;
 #X text 23 173 https://forum.openframeworks.cc/t/how-to-find-out-translated-coordinate-in-the-middle-of-draw/24866
 ;
@@ -24,8 +24,8 @@ of draw() -> allows translate / rotate to change current camera _c_position/rota
 order is 0 (from [of.window]) - Rendering order < 0 and > 1000 will
 be out of camera with default openframeworks starting point 0 \, 0
 \, 0 at BOTTOM LEFT because openGL texture is reversed);
-#X restore 683 35 pd Notes;
-#X obj 27 73 ofelia d camera-\$0 \; local c = ofCanvas(this) \; local
+#X restore 773 32 pd Notes;
+#X obj 117 70 ofelia d camera-\$0 \; local c = ofCanvas(this) \; local
 v = ofVec3f(0 \, 1 \, 0) \; local args = c:getArgs() \; local debug
 \, ortho \, gridsteps \, gridsize \, fov = 0 \, 0 \, 10 \, 100 \, 60
 \; \; function M.new() \; ofWindow.addListener("setup" \, this \, -1)
@@ -54,12 +54,12 @@ else _maincamera:disableOrtho() end end \; function M.fov(float) fov
 f end \; function M.reset() M.position(ofTable(0 \, 0 \, 400))M.orientation(ofTable(0
 \, 0 \, 0)) M.fov(60) M.ortho(0) M.vflip(0) end \; function M.gridsteps(f)
 gridsteps = math.abs(f) end \; function M.gridsize(f) gridsize = f
-end \; function M.vflip(float) _maincamera:setVFlip(float~=0)
-end \; function M.aspectratio(f) _maincamera:setAspectRatio(f) end
-\; function M.farclip(f) _maincamera:setFarClip(f) end \; function
-M.lensoffset(l) _maincamera:setLensOffset(ofVec2f(l[1] \, l[2]):vec2())end
-\; function M.nearclip(f) _maincamera:setNearClip(f) end \; function
-M.position(l) _c_position:set (l[1] \, l[2] \, l[3]) _maincamera:setPosition(_c_position:vec3())
+end \; function M.vflip(float) _maincamera:setVFlip(float~=0) end \;
+function M.aspectratio(f) _maincamera:setAspectRatio(f) end \; function
+M.farclip(f) _maincamera:setFarClip(f) end \; function M.lensoffset(l)
+_maincamera:setLensOffset(ofVec2f(l[1] \, l[2]):vec2())end \; function
+M.nearclip(f) _maincamera:setNearClip(f) end \; function M.position(l)
+_c_position:set (l[1] \, l[2] \, l[3]) _maincamera:setPosition(_c_position:vec3())
 end \; function M.orientation(l) _c_orientation:set (l[1] \, l[2] \,
 l[3]) _maincamera:setOrientation(_c_orientation:vec3()) end \; function
 M.lookat(l) _c_lookat:set (l[1] \, l[2] \, l[3]) _maincamera:lookAt(_c_lookat:vec3()
@@ -72,7 +72,9 @@ _maincamera:setOrientation(_c_orientation:vec3()) M.fov(l[7]) end \;
 (gridsize \, gridsteps \, false) \; if _lighting == 1 then ofEnableLighting()
 end end \; return anything \; end \;;
 #X f 138;
-#X connect 0 0 16 0;
+#X obj 29 45 route imageID;
+#X msg 29 70 imageID \$1;
+#X connect 0 0 17 0;
 #X connect 1 0 7 0;
 #X connect 2 0 8 0;
 #X connect 3 0 9 0;
@@ -86,3 +88,6 @@ end end \; return anything \; end \;;
 #X connect 11 0 16 0;
 #X connect 14 0 6 0;
 #X connect 16 0 13 0;
+#X connect 17 0 18 0;
+#X connect 17 1 16 0;
+#X connect 18 0 13 0;

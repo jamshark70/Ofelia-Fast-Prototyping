@@ -1,14 +1,14 @@
-#N canvas 12 32 859 698 12;
-#X obj 31 14 inlet;
-#X obj 31 600 outlet;
-#X obj 93 14 inlet;
-#X obj 253 14 inlet;
-#X text 764 551 RI;
-#X msg 253 40 res \$1;
-#X obj 173 14 inlet;
-#X msg 93 40 width \$1;
-#X msg 173 40 height \$1;
-#X obj 31 75 ofelia d ellipse-\$0 \; local c = ofCanvas(this) \; local
+#N canvas 12 86 859 679 12;
+#X obj 130 7 inlet;
+#X obj 27 600 outlet;
+#X obj 192 7 inlet;
+#X obj 352 7 inlet;
+#X text 863 544 RI;
+#X msg 352 33 res \$1;
+#X obj 272 7 inlet;
+#X msg 192 33 width \$1;
+#X msg 272 33 height \$1;
+#X obj 130 68 ofelia d ellipse-\$0 \; local c = ofCanvas(this) \; local
 args = c:getArgs() \; local node\$0 = ofNode() \; local width \, height
 \, res \, drawmode \, strokeweight \, debug = args[1] \, args[2] \,
 args[3] \, args[4] \, args[5] \; local position \, orientation \, scale
@@ -32,7 +32,9 @@ end \; \; function M.bang() \; ofSetLineWidth(strokeweight) \; if drawmode
 \; if debug == 1 then node\$0:draw() end \; ofFill() \; return anything
 \; end \;;
 #X f 108;
-#X connect 0 0 9 0;
+#X obj 27 38 route imageID;
+#X msg 27 63 imageID \$1;
+#X connect 0 0 10 0;
 #X connect 2 0 7 0;
 #X connect 3 0 5 0;
 #X connect 5 0 9 0;
@@ -40,3 +42,6 @@ end \; \; function M.bang() \; ofSetLineWidth(strokeweight) \; if drawmode
 #X connect 7 0 9 0;
 #X connect 8 0 9 0;
 #X connect 9 0 1 0;
+#X connect 10 0 11 0;
+#X connect 10 1 9 0;
+#X connect 11 0 1 0;
