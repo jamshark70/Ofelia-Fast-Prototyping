@@ -36,7 +36,6 @@ function M.volume(float) M.image:setVolume(float) end;
 function M.loop(float) loop = float end;
 function M.close() M.image:close() end;
 function M.get() outlet:outletList(1, ofTable (M.image:isLoaded(), M.image:isPlaying(), ofClamp(M.image:getCurrentFrame(), 0, M.image:getTotalNumFrames()), M.image:getTotalNumFrames(), M.image:getWidth(), M.image:getHeight(), M.image:getDuration())) end;
-function M.imageID() end;
 ;
 function M.bang();
 if loop == 0 then M.image:setLoopState(OF_LOOP_NONE) end;

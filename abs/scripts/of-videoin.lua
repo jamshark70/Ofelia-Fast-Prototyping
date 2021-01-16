@@ -44,7 +44,6 @@ end;
 end;
 function M.get() outlet:outletList(1, ofTable (M.image:isInitialized(), M.image:getWidth(), M.image:getHeight(), M.image:getTexturePlanes()));
 end;
-function M.imageID() end;
 ;
 function M.bang();
 M.image:update();

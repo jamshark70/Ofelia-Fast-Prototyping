@@ -10,11 +10,14 @@
 #X obj 15 190 f \$0;
 #X obj 15 165 route bang;
 #X msg 15 215 imageID video-\$1 \, bang;
-#X connect 0 0 4 0;
+#X obj 15 85 route imageID;
+#X connect 0 0 10 0;
 #X connect 4 0 8 0;
 #X connect 4 1 2 0;
 #X connect 5 0 6 0;
 #X connect 6 0 4 0;
 #X connect 7 0 9 0;
 #X connect 8 0 7 0;
+#X connect 8 1 1 0;
 #X connect 9 0 1 0;
+#X connect 10 1 4 0;

@@ -61,7 +61,6 @@ if ofWindow.exists then;
 saved = imageTable[index]:save(string) end if saved then print("saved " .. string) end;
 end;
 function M.get() outlet:outletList(1, ofTable (loaded, imageTable[index]:getWidth(), imageTable[index]:getHeight(), imageTable[index]:getImageType(), imageTable[index]:getTexture(), imageTable[index]:getPixels())) end;
-function M.imageID() end;
 ;
 function M.bang();
 if drawimage == 1 then imageTable:draw(X, Y, Z, H, W) end;
