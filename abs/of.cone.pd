@@ -1,4 +1,4 @@
-#N canvas 342 86 944 679 12;
+#N canvas 342 93 944 673 12;
 #X obj 31 24 inlet;
 #X obj 31 213 outlet;
 #X obj 90 22 inlet;
@@ -12,23 +12,61 @@
 #X msg 320 48 hseg \$1;
 #X msg 390 48 cseg \$1;
 #X text 786 773 RI;
-#X obj 31 163 ofelia d cone-\$0;
-#X f 131;
-#X obj 466 22 loadbang;
-#X msg 466 48 read scripts/of-cone.lua;
 #X obj 31 188 list trim;
-#X connect 0 0 13 0;
+#X obj 31 163 ofelia d -k cone-\$0;
+#A __set local c = ofCanvas(this) \; local args = c:getArgs() \; local
+radius \, height \, rseg \, hseg \, cseg \, drawmode \, stroke \, debug
+\, normalsize = args[1] \, args[2] \, args[3] \, args[4] \, args[5]
+\, args[6] \, args[7] \, 0 \, 10 \; local position \, orientation \,
+scale \, lookat = ofVec3f() \, ofVec3f() \, ofVec3f(1 \, 1 \, 1) \,
+ofVec3f() \; \; function M.new() \; ofWindow.addListener("setup" \,
+this) \; if args[1] == nil then radius = 100 end \; if args[2] == nil
+then height = 100 end \; if args[3] == nil then rseg = 10 end \; if
+args[4] == nil then hseg = 10 end \; if args[5] == nil then cseg =
+10 end \; if args[6] == nil then drawmode = "fill" end \; if args[7]
+== nil then stroke = 1 end \; M.setup() \; end \; \; function M.free()
+\; ofWindow.removeListener("setup" \, this) \; end \; \; function M.setup()
+\; M.cone = ofConePrimitive() \; M.cone:set(radius \, height \, rseg
+\, hseg \, cseg \, OF_PRIMITIVE_TRIANGLE_STRIP) \; end \; \; function
+M.list(l) M.radius(l[1]) M.height(l[2]) M.rseg(l[3]) M.hseg(l[4]) M.cseg(l[5])
+M.draw(l[6]) M.stroke(l[8]) end \; function M.radius(f) radius = f
+M.cone:setRadius(f) end \; function M.height(f) height = f M.cone:setHeight(f)
+end \; function M.rseg(f) rseg = f M.cone:setResolutionRadius(f) end
+\; function M.hseg(f) hseg = f M.cone:setResolutionHeight(f) end \;
+function M.cseg(f) cseg = f M.cone:setResolutionCap(f) end \; function
+M.draw(string) drawmode = string end \; function M.stroke(f) stroke=f
+end \; function M.normalsize(float) normalsize=float end \; function
+M.debug(f) debug = f end \; function M.position(l) position.x=l[1]
+position.y=l[2] position.z=l[3] M.node:setPosition(position:vec3())
+end \; function M.orientation(l) orientation.x=l[1] orientation.y=l[2]
+orientation.z=l[3] M.node:setOrientation(orientation:vec3()) end \;
+function M.scale(l) scale.x=l[1] scale.y=l[2] scale.z=l[3] M.node:setScale(scale:vec3())
+end \; function M.lookat(l) lookat.x=l[1] lookat.y=l[2] lookat.z=l[3]
+M.cone:lookAt(lookat:vec3()) end \; function M.texture(f) if f > 0
+then M.cone:enableTextures() else M.cone:disableTextures() end end
+\; function M.texturemap(l) M.cone:mapTexCoords(l[1] \, l[2] \, l[3]
+\, l[4]) end \; function M.imageID(sym) \; if sym == nil then M.imageSource
+= nil M.lastID = nil return("imageID") \; else if sym ~= lastID then
+\; M.imageSource = require(sym) \; M.lastID = sym \; return ofTable("imageID"
+\, sym) \; end \; end \; end \; function M.bang() \; ofSetLineWidth(stroke)
+\; if M.imageSource ~= nil then M.imageSource.image:getTexture():bind()
+end \; if drawmode == "fill" then M.cone:drawFaces() end \; if drawmode
+== "point" then M.cone:drawVertices() end \; if drawmode == "line"
+then M.cone:drawWireframe() end \; if drawmode == "normal" then M.cone:drawNormals(normalsize)
+end \; if debug > 0 then M.cone:drawAxes(debug*100) end \; if M.imageSource
+~= nil then M.imageSource.image:getTexture():unbind() end \; return
+anything \; end \;;
+#X f 131;
+#X connect 0 0 14 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
 #X connect 4 0 9 0;
 #X connect 5 0 10 0;
 #X connect 6 0 11 0;
-#X connect 7 0 13 0;
-#X connect 8 0 13 0;
-#X connect 9 0 13 0;
-#X connect 10 0 13 0;
-#X connect 11 0 13 0;
-#X connect 13 0 16 0;
-#X connect 14 0 15 0;
-#X connect 15 0 13 0;
-#X connect 16 0 1 0;
+#X connect 7 0 14 0;
+#X connect 8 0 14 0;
+#X connect 9 0 14 0;
+#X connect 10 0 14 0;
+#X connect 11 0 14 0;
+#X connect 13 0 1 0;
+#X connect 14 0 13 0;

@@ -1,4 +1,4 @@
-#N canvas 464 86 732 679 12;
+#N canvas 464 93 732 673 12;
 #X obj 15 3 inlet;
 #X obj 15 346 outlet;
 #X obj 59 3 inlet;
@@ -17,23 +17,45 @@ on windows):, f 70;
 #X text 14 56 - play backward have some jittery frames (might depends
 on codec?), f 71;
 #X restore 425 11 pd Notes;
-#X obj 15 122 ofelia d -c12 videoplayer-\$0;
-#X f 92;
-#X obj 130 3 loadbang;
-#X msg 130 28 read scripts/of-movie.lua;
 #X obj 15 180 f \$0;
 #X obj 15 155 route bang;
 #X msg 15 205 imageID videoplayer-\$1 \, bang;
 #X obj 15 72 route imageID;
-#X connect 0 0 13 0;
+#X obj 15 122 ofelia d -c12 -k videoplayer-\$0;
+#A __set local canvas = ofCanvas(this) \; local args = canvas:getArgs()
+\; local outlet = ofOutlet(this) \; M.image = ofVideoPlayer() \; local
+filename \, start \, loop = args[1] \, args[2] \, args[3] \; local
+loaded = 0 \; \; function M.new() \; ofWindow.addListener("setup" \,
+this) \; if args[1] == nil then print("No file loaded") else M.open(filename)
+end \; if args[2] == 1 then M.play() end \; if args[3] == nil then
+loop = 0 end end \; \; function M.free() \; ofWindow.removeListener("setup"
+\, this) \; M.image:close() end \; \; function M.setup() M.image:close()
+M.image:load(filename) end \; \; function M.open(string) ofSetDataPathRoot(ofCanvas(this
+\, 1):getDir()) filename = string \; if ofWindow.exists then \; M.image:close()
+\; M.image:load(filename) \; if (M.image:isLoaded()) then \; print("loaded
+" .. filename) \; M.image:update() end end \; end \; function M.update()
+M.image:update() end \; function M.play() M.image:play() end \; function
+M.stop() M.image:stop() end \; function M.pause() M.image:setPaused(true)
+end \; function M.speed(float) M.image:setSpeed(float) end \; function
+M.frame(float) M.image:setFrame(float) end \; function M.position(float)
+M.image:setPosition(float) end \; function M.volume(float) M.image:setVolume(float)
+end \; function M.loop(float) loop = float end \; function M.close()
+M.image:close() end \; function M.get() outlet:outletList(1 \, ofTable
+(M.image:isLoaded() \, M.image:isPlaying() \, ofClamp(M.image:getCurrentFrame()
+\, 0 \, M.image:getTotalNumFrames()) \, M.image:getTotalNumFrames()
+\, M.image:getWidth() \, M.image:getHeight() \, M.image:getDuration()))
+end \; \; function M.bang() \; if loop == 0 then M.image:setLoopState(OF_LOOP_NONE)
+end \; if loop == 1 then M.image:setLoopState(OF_LOOP_NORMAL) end \;
+if loop == 2 then M.image:setLoopState(OF_LOOP_PALINDROME) end \; M.image:update()
+\; outlet:outletBang(0) \; end \;;
+#X f 92;
+#X connect 0 0 10 0;
 #X connect 2 0 4 0;
-#X connect 4 0 7 0;
-#X connect 7 0 11 0;
-#X connect 7 1 3 0;
-#X connect 8 0 9 0;
-#X connect 9 0 7 0;
-#X connect 10 0 12 0;
-#X connect 11 0 10 0;
-#X connect 11 1 1 0;
-#X connect 12 0 1 0;
-#X connect 13 1 7 0;
+#X connect 4 0 11 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 8 1 1 0;
+#X connect 9 0 1 0;
+#X connect 10 1 11 0;
+#X connect 11 0 8 0;
+#X connect 11 1 3 0;

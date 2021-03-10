@@ -1,11 +1,9 @@
 #N canvas 548 113 630 500 12;
 #X obj 56 33 inlet;
 #X obj 258 33 loadbang;
-#X obj 56 387 ofelia d shader-\$0;
 #X obj 258 58 f \$0;
 #X obj 56 437 outlet;
 #X obj 365 108 print initmsg;
-#X msg 258 83 read scripts/of-shader.lua \, setImageID shader-\$1;
 #X obj 56 412 list trim;
 #X obj 410 178 list prepend setParameter;
 #X obj 410 203 list trim;
@@ -21,26 +19,113 @@
 #X obj 197 228 s to_shader_\$0;
 #X obj 339 316 s to_shader_\$0;
 #X obj 258 108 s to_shader_\$0;
-#X connect 0 0 17 0;
-#X connect 1 0 3 0;
-#X connect 2 0 7 0;
-#X connect 3 0 6 0;
-#X connect 6 0 5 0;
-#X connect 6 0 21 0;
-#X connect 7 0 4 0;
-#X connect 8 0 9 0;
-#X connect 9 0 20 0;
-#X connect 10 0 19 0;
-#X connect 11 0 10 0;
-#X connect 12 0 13 0;
-#X connect 13 0 2 0;
-#X connect 14 0 2 0;
-#X connect 15 0 14 0;
+#X obj 56 387 ofelia d -k shader-\$0;
+#A __set local canvas = ofCanvas(this) \; local outlet = ofOutlet(this)
+\; local pix = ofPixels() \; local path \; M.shader = ofShader() \;
+M.image = ofFbo() \; M.useFbo = 1 \; local inited = false \; ofDisableArbTex()
+\; \; -- initialize \; function M.new() \; ofWindow.addListener("setup"
+\, this) \; local dir = ofCanvas(this):getDir() \; local params = ofTable()
+\; local args = canvas:getArgs() \; path = dir .. "/shaders/" .. args[1]
+\; print("path" \, path) \; if file_exists(path .. ".desc") then \;
+for line in io.lines(path .. ".desc") do \; print(line) \; local entry
+= M.parseLine(line) \; for k \, v in pairs(entry) do print(k \, v)
+end \; params[entry['name']] = entry \; M[entry['name'] .. "List"]
+= entry['default'] \; M.setParams[entry['type']](entry['name'] \, entry['default'])
+\; end \; M.paramTable = params \; M.setup() \; else error("Undefined
+shader " .. args[1]) end \; end \; function M.setup() \; if(inited
+~= true) then print("trying to load shader" \, path) \; M.shader:load(path)
+\; inited = true \; end \; end \; function M.setImageID(sym) M.id =
+sym end \; \; -- drawing related: get source and draw \; function M.imageID(sym)
+\; M.sourceId = sym \; M.imageSource = require(sym) \; local img =
+M.imageSource.image \; if(img:getWidth() ~= M.image:getWidth() or img:getHeight()
+~= M.image:getHeight()) then \; M.image:clear() \; M.image:allocate(img:getWidth()
+\, img:getHeight() \, GL_RGBA) \; print("allocated for image ID" \,
+sym) \; print("w =" \, M.image:getWidth() \, " \, h =" \, M.image:getHeight())
+\; end \; end \; function M.bang() \; M.image:beginFbo() \; ofClear(128
+\, 255) \; M.shader:beginShader() \; for name \, entry in pairs(M.paramTable)
+do \; M.sendParams[ M.sendFuncsByType[ entry['type'] ] ] (name \, M[name])
+\; end \; M.shader:setUniform2f("dimen" \, ofVec2f(M.imageSource.image:getWidth()
+\, M.imageSource.image:getHeight()):vec2()) \; M.imageSource.image:draw(0
+\, 0) \; M.shader:endShader() \; M.image:endFbo() \; if(M.useFbo ~=
+0) then outlet:outletList(0 \, ofTable("imageID" \, M.id)) else outlet:outletList(0
+\, ofTable("imageID" \, M.imageSourceId)) end \; outlet:outletBang(0)
+\; end \; function M.free() \; ofWindow.removeListener("setup" \, this)
+\; M.shader:unload() M.image:clear() \; end \; \; -- functions to send
+parameters to the shader \; M.sendParams = { send1f = function(param
+\, f) M.shader:setUniform1f(param \, f) end \, send2f = function(param
+\, vec) M.shader:setUniform2f(param \, vec) end \, send3f = function(param
+\, vec) M.shader:setUniform3f(param \, vec) end \, send4f = function(param
+\, color) M.shader:setUniform4f(param \, color) end } \; M.sendFuncsByType
+= { oneF = 'send1f' \, twoF = 'send2f' \, threeF = 'send3f' \, grey
+= 'send4f' \, greyA = 'send4f' \, rgb = 'send4f' \, rgba = 'send4f'
+\, greyF = 'send4f' \, greyAF = 'send4f' \, rgbF = 'send4f' \, rgbaF
+= 'send4f' } \; -- convert data types into sendable objects \; M.setParams
+= { oneF = function(param \, f) M[param] = f end \, twoF = function(param
+\, v) M[param] = ofVec2f(v[1] \, v[2]) end \, threeF = function(param
+\, v) M[param] = ofVec3f(v[1] \, v[2] \, v[3]) end \, grey = function(param
+\, g) M[param] = ofColor(g[1] \, g[1] \, g[1] \, 1) end \, greyA =
+function(param \, g) M[param] = ofColor(g[1] \, g[1] \, g[1] \, g[1])
+end \, rgb = function(param \, v) M[param] = ofColor(v[1] \, v[2] \,
+v[3] \, 1) end \, rgba = function(param \, v) M[param] = ofColor(v[1]
+\, v[2] \, v[3] \, v[4]) end \, greyF = function(param \, g) M[param]
+= ofFloatColor(g[1] \, g[1] \, g[1] \, 1) end \, greyAF = function(param
+\, g) M[param] = ofFloatColor(g[1] \, g[1] \, g[1] \, g[1]) end \,
+rgbF = function(param \, v) M[param] = ofFloatColor(v[1] \, v[2] \,
+v[3] \, 1) end \, rgbaF = function(param \, v) M[param] = ofFloatColor(v[1]
+\, v[2] \, v[3] \, v[4]) end } \; -- allow colors to be set as either
+grey or rgb \; M.convertFuncs = { rgb = {} \, rgba = {} \, rgbF = {}
+\, rgbaF = {} } \; M.convertFuncs['rgb'][1] = function(v) return ofTable(v[1]
+\, v[1] \, v[1]) end \; M.convertFuncs['rgba'][1] = function(v) return
+ofTable(v[1] \, v[1] \, v[1] \, v[1]) end \; M.convertFuncs['rgbF'][1]
+= function(v) return ofTable(v[1] \, v[1] \, v[1]) end \; M.convertFuncs['rgbaF'][1]
+= function(v) return ofTable(v[1] \, v[1] \, v[1] \, v[1]) end \; M.convertFuncs['rgba'][3]
+= function(v) return ofTable(v[1] \, v[1] \, v[1] \, M.luma(v)) end
+\; M.convertFuncs['rgbaF'][3] = function(v) return ofTable(v[1] \,
+v[1] \, v[1] \, M.luma(v)) end \; function M.luma(v) return 0.2126*v[1]
++ 0.7152*v[2] + 0.0722*v[3] end \; -- parameter setter/getter \; function
+M.setParameter(list) \; local name = list[1] \; local descriptor =
+M.paramTable[name] \; if descriptor ~= nil then local values = M.subList(list
+\, 2 \, #list) \; local convertTable = M.convertFuncs[descriptor['type']]
+\; if convertTable ~= nil then local convert = convertTable[#values]
+\; if convert ~= nil then values = convert(values) \; end end \; --
+if the input list format is wrong \, this will fail \; -- protecting
+the "List" storage \; M.setParams[descriptor['type']](name \, values)
+\; M[name .. "List"] = values \; else error("Undefined parameter "
+.. name) end \; end \; function M.getParameter(name) return(M[name
+.. "List"]) end \; function M.subList(list \, startIndex \, endIndex)
+\; local newlist = ofTable() \; for i = startIndex \, endIndex \, 1
+do newlist[#newlist + 1] = list[i] end \; return(newlist) \; end \;
+\; -- support functions \; function M.printModule() -- debugging only
+\, remove later \; for k \, v in pairs(M) do print(k \, v) end \; end
+\; function M.parseLine(line) \; local entry = ofTable() \; local default
+= ofTable() \; local i = 0 \; for token in string.gmatch(line \, "[^%s]+")
+do \; if i == 0 then entry['name'] = token \; else if i == 1 then entry['type']
+= token \; else default[#default + 1] = tonumber(token) \; end end
+\; i = i + 1 \; end \; entry['default'] = default \; return entry \;
+end \; function file_exists(file) \; print("testing path" \, file)
+\; local f = io.open(file \, "rb") \; if f then f:close() end \; return
+f ~= nil \; end \;;
+#X msg 258 83 setImageID shader-\$1;
+#X connect 0 0 15 0;
+#X connect 1 0 2 0;
+#X connect 2 0 21 0;
+#X connect 5 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 18 0;
+#X connect 8 0 17 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 11 0 20 0;
+#X connect 12 0 20 0;
+#X connect 13 0 12 0;
+#X connect 14 0 18 0;
+#X connect 15 0 10 0;
+#X connect 15 1 13 0;
+#X connect 15 2 9 0;
+#X connect 15 3 18 0;
+#X connect 15 4 14 0;
+#X connect 15 5 6 0;
 #X connect 16 0 20 0;
-#X connect 17 0 12 0;
-#X connect 17 1 15 0;
-#X connect 17 2 11 0;
-#X connect 17 3 20 0;
-#X connect 17 4 16 0;
-#X connect 17 5 8 0;
-#X connect 18 0 2 0;
+#X connect 20 0 5 0;
+#X connect 21 0 4 0;
+#X connect 21 0 19 0;
